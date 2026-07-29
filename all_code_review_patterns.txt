@@ -1,0 +1,122 @@
+🐍 PIÈGES & ERREURS PYTHON FONDAMENTALES (Bugs, Async & Structure)
+🔴 Critical Bugs & Flaws
+🔴 Oubli de `await` sur une Coroutine Async : Appeler `res = async_function()` sans `await`. `res` contient un objet `<coroutine>` non exécuté au lieu de la donnée.
+   • Impact Scalabilité : Opérations asynchrones non exécutées en parallèle.
+   • Impact Structure : Rompt la propagation du flux de données asynchrone entre modules.
+   • Correction : Toujours faire `res = await async_function()`.
+🔴 Utilisation de `asyncio.run()` dans une Boucle Async déjà active : Appeler `asyncio.run(coro())` dans un handler FastAPI/SSE.
+   • Impact Scalabilité : Lève `RuntimeError: Cannot call asyncio.run() from a running event loop`. Crashe les workers sous charge.
+   • Impact Structure : Viol de l'architecture événementielle async. Mélange de gestion de boucle globale et locale.
+   • Correction : Remplacer par `await coro()` ou `asyncio.create_task(coro())`.
+🔴 Exceptions Ravalées Silencieusement (Swallowed Exceptions) : Écrire `try: ... except Exception: pass` ou `except:` sans logger.
+   • Impact Scalabilité : Masque la dégradation du système sous forte charge. p99 immangeable.
+   • Impact Structure : Casse la chaîne de gestion des erreurs (Error propagation chain) et détruit le contrat de retour des fonctions.
+   • Correction : Logger avec traceback (`logger.exception(...)`) et/ou relancer (`raise`).
+🔴 Arguments par Défaut Mutables (`def fn(items=[])`) : Utiliser `[]` ou `{}` comme valeur par défaut.
+   • Impact Scalabilité / Structure : Effet de bord global. Violation de l'isolation de l'état entre invocations de fonctions.
+   • Correction : Utiliser `def fn(items: Optional[List] = None): if items is None: items = []`.
+🔴 Concaténation de Types Incompatibles : Faire `"Tokens: " + num_tokens` (avec `num_tokens: int`).
+   • Impact Structure : Fragilité du typage dynamique.
+   • Correction : Utiliser des f-strings : `f"Tokens: {num_tokens}"`.
+🔴 Accès Direct sans Vérification (`KeyError` & `AttributeError`) : Faire `d["key"]` ou `obj.attr` sans vérifier `None`.
+   • Impact Structure : Absence de contrat de données clair (DTO) entre fonctions.
+   • Correction : Utiliser `d.get("key")` et vérifier `if obj is not None:` ou des modèles Pydantic.
+
+🟠 Logic, Scope & Structural Flaws
+🟠 Fuite de Ressources (Fichiers / Sockets sans Context Manager) : Ouvrir un fichier ou socket sans bloc `with` / `async with`.
+   • Impact Structure / Scalabilité : Absence de gestion déterministe du cycle de vie des objets (Resource Lifecycle).
+   • Correction : Utiliser `with open(...) as f:` ou `async with client:`.
+🟠 Classes Monolithiques "God Class" / Violation du Principe de Responsabilité Unique (SRP) : Tout mettre dans une seule classe (`PipelineManager` qui gère le prompt, l'E/S réseau, le parsing JSON, l'écriture BDD et les retries).
+   • Impact Structure : Impossibilité de tester chaque brique séparément, couplage fort, réusabilité nulle.
+   • Correction : Découpler en services dédiés (`PromptBuilder`, `MistralClient`, `ToolExecutor`, `Repository`).
+
+
+
+🤖 Applied AI, Agentic Workflows & Enterprise Chatbots (Mistral FDE - PRIORITÉ #1)
+🔴 Critical Bugs & Flaws
+🔴 Historique de Conversation Illimité (Context Overflow) : Empiler indéfiniment les messages dans `messages` envoyés au LLM.
+   • Impact Scalabilité : Dépassement de la fenêtre de contexte (`ContextWindowExceededError`), latence $O(N^2)$, coûts API explosifs.
+   • Impact Structure : Absence de modèle d'état clair (State Abstraction) pour la mémoire conversationnelle.
+   • Correction : Fenêtrage glissant (Sliding Window) ou résumé automatique (Summary Buffer).
+🔴 Suppression du System Prompt lors du Slicing de la Mémoire : Faire `messages = messages[-10:]` pour fenêtrer, supprimant le `system_prompt` situé à l'index `0`.
+   • Impact Scalabilité / Structure : Perte d'instructions et de guardrails en cours de route. Dissociation du rôle et du contexte.
+   • Correction : Isoler le message `system` à l'index `0` et fenêtrer uniquement le reste.
+🔴 Fuite de Données Inter-Locataires (Cross-Tenant Data Leakage) : Partager une instance globale de client/agent ou Vector Store sans filtrer par `tenant_id`.
+   • Impact Structure & Sécurité : Rupture de l'isolation d'état multi-tenant (Tenant Context Boundaries). Faille de sécurité critique.
+   • Correction : Isolation stricte par contexte de requête et filtre metadata `tenant_id` obligatoire.
+🔴 Blocage Async pendant le Streaming SSE : Utiliser `time.sleep()`, `requests.post()` ou un calcul CPU lourd dans un générateur async SSE (`StreamingResponse`).
+   • Impact Scalabilité : Bloque l'Event Loop Python. Latence p99 catastrophique pour tous les clients.
+   • Impact Structure : Mélange de code synchrone bloquant dans des interfaces d'E/S streaming asynchrones.
+   • Correction : Utiliser `httpx.AsyncClient` ou `asyncio.sleep()`.
+🔴 Exécution d'Outils avec Arguments Non Validés (Unvalidated Tool Calls) : Exécuter `tool(**json.loads(args))` sans validation Pydantic.
+   • Impact Structure & Sécurité : Violation des contrats de type aux frontières d'exécution d'outils. Faille d'injection de code.
+   • Correction : Valider les arguments avec Pydantic avant l'exécution.
+
+🟠 Architectural & Logic Issues
+🟠 Couplage Fort aux Clients d'API (Absence d'Injection de Dépendances) : Instancier le client API en dur dans les méthodes métiers (`self.client = Mistral(...)`).
+   • Impact Structure : Impossibilité de simuler (mock) les appels LLM pendant les tests unitaires sans payer de vrais requêtes API.
+   • Correction : Injecter le client via le constructeur ou des interfaces abstraites (`Protocol` / ABC).
+🟠 Mélange de la Logique Métier et de la Couche Web (FastAPI Endpoints Surchargés) : Mettre l'orchestration de l'agent et le prompt engineering directement dans la fonction `@app.post(...)`.
+   • Impact Structure : Impossible de réutiliser l'agent dans un script CLI, un worker Celery ou des tests unitaires purs.
+   • Correction : Isoler la logique dans une classe de domaine (`AgentService`) et ne garder dans FastAPI que le routage HTTP.
+🟠 Hardcoding de Configuration & Magic Strings disséminés : Répéter `"mistral-large-latest"` ou les paramètres d'API en dur dans plusieurs fonctions.
+   • Impact Structure : Modification cauchemardesque lors des changements d'environnements (Dev, Staging, Prod).
+   • Correction : Centraliser la configuration dans un objet `pydantic-settings` (`BaseSettings`).
+
+
+
+🧪 LLM Evals, Tracing & Guardrails (PRIORITÉ #2)
+🔴 Critical Bugs & Flaws
+🔴 Évaluation Bloquante (LLM-as-a-Judge) dans le Chemin Critique : Exécuter un appel LLM-as-a-Judge synchrone sur la requête utilisateur pour valider la réponse.
+   • Impact Scalabilité : +2 à +5 secondes de latence ajoutées à chaque requête.
+   • Impact Structure : Couplage fort entre le chemin d'exécution principal et la sous-boucle d'évaluation.
+   • Correction : Guardrails légers déterministes (Regex, Pydantic) en synchrone ; LLM-as-a-Judge en asynchrone / batch.
+🔴 Division par Zéro dans le Calcul des Métriques (`Precision` / `Recall`) : Faire `precision = true_positives / total_predicted` sans vérifier si `total_predicted == 0`.
+   • Impact Structure : Invalidation soudaine des pipelines CI/CD d'évaluation.
+   • Correction : Ajouter `if total_predicted == 0: return 0.0`.
+🔴 Non-reproductibilité des Evals (Missing Random Seed) : Exécuter des benchmarks avec `temperature=0.7` sans fix de `seed`.
+   • Impact Structure : Rends les tests de régression non déterministes et inexploitables dans une chaîne de déploiement.
+   • Correction : Fixer `temperature=0.0` et définir `seed=42`.
+
+🟠 Architectural & Logic Issues
+🟠 Absence de Propagation du Contexte de Tracing dans les Agents : Logger des requêtes sans lier un `trace_id` ou `session_id` commun.
+   • Impact Structure : Perte de la composabilité et de l'observabilité de l'arbre d'exécution distribué (Distributed Tracing Graph).
+   • Correction : Propager un identifiant de trace unique à chaque sous-appel/outil.
+
+
+
+⚙️ Practical Pythonic & Async System Design (PRIORITÉ #3)
+🔴 Critical Bugs & Flaws
+🔴 Codes de Statut HTTP Inappropriés (FastAPI) : Renvoyer HTTP 200 OK avec un corps `{"error": "Failed"}` au lieu de lever `HTTPException`.
+   • Impact Structure & Scalabilité : Casse les standards d'API RESTful et trompe l'observabilité.
+   • Correction : Lever `HTTPException` (400 Client, 401 Auth, 500 Server).
+🔴 Re-tenties d'Écritures (Retries) Sans Clé d'Idempotence : Re-tenter des appels POST/PUT en cas d'erreur 5xx.
+   • Impact Scalabilité : Crée des effondrements en chaîne (*Thundering Herd Problem*), des doublons d'écritures.
+   • Impact Structure : Manque de garanties de transactionnalité aux frontières de services.
+   • Correction : Utiliser une `idempotency_key` (UUID) et un Circuit Breaker.
+🔴 Requêtes N+1 d'API ou de BDD dans des Boucles : Interroger une BDD ou une API externe à chaque itération d'une boucle `for`.
+   • Impact Scalabilité : Latence linéaire $O(N)$ allers-retours réseau.
+   • Impact Structure : Mauvais découpage des accès données. Absence de couche d'abstraction d'accès par batch.
+   • Correction : Effectuer des requêtes groupées (Batch requests / SQL JOIN / `IN (...)`).
+
+🟠 Architectural & Logic Issues
+🟠 Opérations Longues Bloquant le Thread API (Fast vs Slow Paths) : Traiter des opérations lourdes (OCR, génération longue) dans le cycle HTTP synchrone.
+   • Impact Scalabilité : Saturation des workers Uvicorn/Gunicorn. Timeouts 504.
+   • Impact Structure : Violation du principe de séparation des chemins d'exécution rapides et lents (Fast vs Slow Execution Paths).
+   • Correction : Renvoyer HTTP 202 Accepted et déléguer le travail à un Background Job (`BackgroundTasks` ou Celery).
+
+
+
+🧠 Core Code Anti-Patterns (Transformers, PyTorch & RAG) (PRIORITÉ #4)
+🔴 Critical Bugs & Flaws
+🔴 Incompatibilité de Device PyTorch (`CUDA` vs `CPU`) : Multiplication matricielle entre un tenseur GPU (`cuda:0`) et un tenseur CPU.
+   • Impact Structure / Exécution : Crash serveur immédiat (`RuntimeError`). Absence de gestion explicite du cycle de vie du device.
+   • Correction : Déplacer les tenseurs sur le même device : `tensor.to(device)`.
+🔴 Absence de `@torch.no_grad()` pendant l'Inférence : Garder le graphe d'autograd actif pendant la génération de tokens.
+   • Impact Scalabilité : Explosion de la VRAM GPU ($3\times$ à $5\times$), provoquant des crashs `CUDA Out Of Memory` (OOM).
+   • Impact Structure : Non-séparation explicite des modes d'exécution (Entraînement vs Inférence).
+   • Correction : Englober les appels d'inférence avec `@torch.no_grad()` ou `with torch.no_grad():`.
+🔴 Re-allocation de Mémoire par `torch.cat` dans la boucle de Génération : Réallouer un nouveau tenseur à chaque token généré.
+   • Impact Scalabilité : Fragmentation VRAM et réallocations mémoire $O(N^2)$, effondrant le débit.
+   • Impact Structure : Absence de pré-allocation et de gestion explicite du cache mémoire.
+   • Correction : Pré-allouer le KV Cache pour `max_seq_len`.

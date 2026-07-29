@@ -1,0 +1,1498 @@
+Mistral Forward Deployed Engineer Interview Guide
+Dan Lee's profile image
+Dan Lee
+Data & AI Lead
+Last update
+March 16, 2026
+Mistral Forward Deployed Engineer Interview
+Table of Contents
+Mistral Forward Deployed Engineer Role
+
+A Typical Week
+Projects & Impact Areas
+Skills & What's Expected
+Levels & Career Growth
+Mistral Forward Deployed Engineer Levels
+Work Culture
+Mistral Forward Deployed Engineer Compensation
+
+Mistral Forward Deployed Engineer Total Compensation by Level
+Mistral Forward Deployed Engineer Interview Process
+
+Initial Screen
+Technical Assessment
+Onsite
+Tips to Stand Out
+Common Reasons Candidates Don't Pass
+Mistral Forward Deployed Engineer Interview Questions
+
+LLMs, RAG, and Agentic AI (Applied)
+Fullstack Engineering & System Design for AI Products
+ML System Design & Productionization (Practical MLOps)
+Backend + ML Coding (TypeScript/Python)
+Databases & Vector Retrieval (Postgres/Supabase + pgvector)
+Cloud Infrastructure & Deployment for AI Workloads
+Behavioral: Forward-Deployed & Startup Execution
+How to Prepare for Mistral Forward Deployed Engineer Interviews
+
+Try a Real Interview Question
+RAG Chunk Selection with Token Budget
+Test Your Readiness
+Frequently Asked Questions
+Share
+
+X
+in
+f
+r
+Mistral Forward Deployed Engineer at a Glance
+
+Total Compensation
+
+$400k - $875k/yr
+
+Interview Rounds
+
+6 rounds
+
+Difficulty
+
+
+Levels
+
+AI Engineer - Staff AI Engineer
+
+Education
+
+Master's / PhD
+
+Experience
+
+2–18+ yrs
+
+JavaScript
+TypeScript
+Python
+Generative AI
+LLMs
+NLP
+Fullstack Development
+Customer Solutions
+MLOps
+Open Source
+RAG
+Agentic AI
+Mistral's forward-deployed engineer role is one of the few applied AI positions where you're expected to be equally fluent in agent orchestration, fullstack product delivery, and client-facing problem scoping, all in the same week. The job listing explicitly calls for daily use of Cursor or Claude Code, which tells you something about the velocity expected: you're not debating architecture in design docs, you're shipping.
+
+Mistral Forward Deployed Engineer Role
+Primary Focus
+
+Generative AI
+LLMs
+NLP
+Fullstack Development
+Customer Solutions
+MLOps
+Open Source
+RAG
+Agentic AI
+Skill Profile
+
+
+Math & Stats
+Medium
+
+Software Eng
+Expert
+
+Data & SQL
+Medium
+
+Machine Learning
+High
+
+Applied AI
+Expert
+
+Infra & Cloud
+High
+
+Business
+Medium
+
+Viz & Comms
+Low
+Math & Stats
+
+Medium
+Implied for model evaluation and understanding AI principles, though the role emphasizes application and integration over deep theoretical research.
+
+Software Eng
+
+Expert
+Requires full-stack implementation skills (Node.js, React, Supabase/Postgres), architectural design, and deploying robust, scalable AI solutions.
+
+Data & SQL
+
+Medium
+Experience with vector stores and databases like Supabase/Postgres for managing data related to AI features.
+
+Machine Learning
+
+High
+Focus on model experimentation, fine-tuning open-source models, prompt tuning, and micro-model evaluations to enhance task accuracy.
+
+Applied AI
+
+Expert
+Core of the role, involving foundational models (LLMs), prompt engineering, agent orchestration, multi-step reasoning (Chain-of-Thought, agents), RAG, and AI voice agents.
+
+Infra & Cloud
+
+High
+Responsible for optimizing the deployment of AI systems and integrating AI features across the platform, transitioning prototypes to production.
+
+Business
+
+Medium
+Requires a product-minded approach, understanding the 'why' behind features, and contributing to UX/feature design to integrate AI effectively into the product.
+
+Viz & Comms
+
+Low
+Not explicitly mentioned in the job description; focus is on technical implementation and AI integration.
+
+What You Need
+
+Prior experience in a startup environment
+Adaptability to chaos
+Enthusiasm for learning new skills
+Proactive approach towards responsibilities
+Familiarity with foundational models (OpenAI, Gemini, Claude, Mistral, etc.)
+In-depth knowledge of prompt engineering
+Knowledge of reasoning pathways
+Knowledge of agent orchestration
+Knowledge of invoking tools
+Practical experience in model fine-tuning
+Practical experience utilizing vector stores
+Proficiency in using Cursor or Claude Code (daily usage preferred)
+Solid backend expertise
+Ability to create UI flows
+Strong passion for leveraging AI as an integral aspect of product design
+Startup mindset (humble, resourceful, accustomed to fast-paced environment)
+Nice to Have
+
+Experience working with LiveKit or real-time communication platforms
+Exposure to LangChain, LlamaIndex, or similar agent frameworks
+Product-minded engineering (understanding the 'why' behind features, contributing to UX/feature design)
+Experience translating abstract AI capabilities into intuitive product workflows
+Languages
+
+JavaScript
+TypeScript
+Python
+Tools & Technologies
+
+OpenAI (foundational model)
+Claude (foundational model)
+Gemini (foundational model)
+Mistral (foundational model)
+Cursor (AI tool)
+Claude Code (AI tool)
+Node.js
+React
+Supabase
+Postgres
+Vector stores
+LiveKit (preferred)
+LangChain (preferred)
+LlamaIndex (preferred)
+Want to ace the interview?
+
+Practice with real questions.
+
+Start Mock Interview
+You'll build production AI systems on top of Mistral's own foundation models alongside OpenAI, Gemini, and Claude, integrating them into real products with React frontends, Node.js backends, and Supabase/Postgres for data. Success after year one means you've taken multiple features from prototype to production: RAG pipelines, agentic multi-step workflows, and AI voice integrations that live inside the product, not in a demo environment. The role requires you to fine-tune open-source models, run micro-model evaluations, and wire up tool invocations and reasoning pathways, then deploy all of it into a system real users touch.
+
+A Typical Week
+A Week in the Life of a Mistral Forward Deployed Engineer
+Typical L5 workweek · Mistral
+
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+
+Monday
+· Client alignment & planning
+
+8:30 AM
+FDE pod standup
+
+9:15 AM
+Client stakeholder workflow review
+
+10:30 AM
+Triage Foundry pipeline failures from the weekend
+
+1:00 PM
+Ontology object type design for new use case
+Weekly time split
+Coding — 30%
+Meetings — 18%
+Break — 15%
+Writing — 12%
+Infrastructure — 10%
+Analysis — 8%
+Research — 7%
+What the time split won't fully convey is the context-switching tax. You might spend a morning pairing with a product designer on a UI flow for an AI feature, then pivot to debugging a vector store retrieval issue in Postgres that afternoon. The job listing's emphasis on "translating abstract AI capabilities into intuitive product workflows" isn't a nice-to-have; it's the core loop of most days.
+
+Projects & Impact Areas
+A big piece of the work involves agent orchestration, chaining model calls with tool invocations and reasoning pathways into multi-step workflows that solve real business problems (Mistral's own cookbook documents a recruitment agent pattern as one example). You're also building and optimizing RAG systems backed by vector stores and Supabase/Postgres, where retrieval quality directly determines whether the AI feature is useful or just impressive in a demo. Some projects touch real-time communication (LiveKit integration is listed as preferred experience), which points to voice-agent and live-interaction use cases that go well beyond standard chatbot territory.
+
+Skills & What's Expected
+The most underestimated requirement is fullstack product engineering. The role scores "expert" on software engineering and "expert" on modern GenAI, but machine learning fundamentals are also rated "high," meaning you can't skip transformer internals, optimization theory, or fine-tuning mechanics. Candidates who only know Python will hit a wall; the stack is TypeScript-heavy (Node.js, React), and the listing expects you to create UI flows, not just backend endpoints. Business acumen and data architecture both sit at "medium," but that medium matters because you need to understand the "why" behind features and contribute to UX decisions, not just execute a spec someone else wrote.
+
+Levels & Career Growth
+Mistral Forward Deployed Engineer Levels
+Each level has different expectations, compensation, and interview focus.
+
+
+AI Engineer
+AI Engineer
+
+2–6 yrs · $350k – $450k TC
+
+Base
+$220k
+
+Stock/yr
+$180k
+
+Bonus
+$0k
+
+2–6 yrs
+Master's or PhD in a relevant field (e.g., Computer Science, Machine Learning, Mathematics) is strongly preferred. Note: This is an estimate as no direct data is available.
+What This Level Looks Like
+
+Owns and implements well-defined components of AI models and systems. Works independently on assigned tasks within a larger project, contributing to team goals with moderate guidance. Impact is primarily at the feature or component level. Note: This is an estimate as no direct data is available.
+
+Day-to-Day Focus
+
+→
+Model Training & Optimization
+→
+Data Pipeline Development
+→
+ML Systems & Tooling
+Interview Focus at This Level
+
+Interviews focus on deep knowledge of machine learning fundamentals, practical experience with training large models (LLMs), strong Python coding skills (especially with PyTorch or JAX), and understanding of distributed systems for ML. Candidates are expected to demonstrate problem-solving abilities on complex, open-ended AI tasks.
+
+Promotion Path
+
+Promotion to Senior AI Engineer requires demonstrating the ability to lead small projects, design and own complex systems with minimal guidance, mentor other engineers, and make significant contributions to core models or infrastructure that impact multiple teams. Note: This is an estimate as no direct data is available.
+
+
+Senior AI Engineer
+Senior AI Engineer
+
+5–10 yrs · $600k TC
+
+
+Staff AI Engineer
+Staff AI Engineer
+
+10–18 yrs · $720k – $1.1m TC
+
+Find your level
+
+Practice with questions tailored to your target level.
+
+Start Practicing
+The jump from Mid to Senior hinges on autonomy: can you own the end-to-end lifecycle of a significant AI component without someone reviewing every design decision? Staff is a different animal entirely. The source data describes Staff scope as defining long-term technical vision for critical AI systems, solving the most ambiguous problems in model training and deployment, and influencing company-wide AI strategy. That's not "do more of the same, faster." It's a shift from building features to shaping how Mistral's entire engineering organization approaches foundation model architecture and infrastructure.
+
+Work Culture
+The role is on-site in Paris with flexible hours and a hybrid arrangement, so don't expect full remote. Mistral's CEO Arthur Mensch has been publicly vocal about European AI sovereignty and resisting market concentration by a few US firms, and that philosophy shows up in the company's commitment to open-weight models as a core product identity, not a side project. Travel is likely for client engagements and internal coordination, and the listing's emphasis on "adaptability to chaos" and "startup mindset (humble, resourceful)" is honest signaling about the pace.
+
+Mistral Forward Deployed Engineer Compensation
+Mistral Forward Deployed Engineer Total Compensation by Level
+Total compensation across all levels (base + stock + bonus). Individual offers vary by team, location, and negotiation.
+
+AI Engineer
+AI Engineer
+
+2–6 yrs
+
+$350k–$450k
+
+total comp range
+
+Base salary
+$220k
+Stock / yr
+$180k
+Bonus
+N/A
+Senior AI Engineer
+Senior AI Engineer
+
+5–10 yrs
+
+$600k
+
+typical total comp
+
+Base salary
+$250k
+Stock / yr
+$310k
+Bonus
+$40k
+Staff AI Engineer
+Staff AI Engineer
+
+10–18 yrs
+
+$720k–$1.1M
+
+total comp range
+
+Base salary
+$310k
+Stock / yr
+$565k
+Bonus
+N/A
+Benefits & Perks
+
+PTO
+
+20 days/yr
+
+Health
+
+Full Coverage (Medical, Dental, Vision)
+
+401k match
+
+401k matching
+
+Work policy
+
+Hybrid - 3 days/week
+
+Perk
+
+Distributed team
+
+Perk
+
+Async
+
+Equity vesting schedule
+
+Standard 4-year vest with a 1-year cliff.
+
+Don't leave money on the table
+
+Most candidates accept the first number. Our coaches help you land the top of the range — not the bottom.
+
+Get coached
+Estimated figures in USD for major US tech hubs · Based on industry research and public job postings
+
+Mistral is still private, so every euro of equity in your offer is illiquid until a liquidity event. That matters more here than at most startups because equity makes up a large share of total comp, especially at the Staff level. Ask your recruiter explicitly whether annual refresh grants exist or if the initial package is the entire four-year allocation, since the answer changes how you should weight equity versus base in your decision.
+
+The comp data above reflects Paris-based roles, but Mistral also hires in NYC and Palo Alto. If you're interviewing for a US seat, use that geographic difference as a natural opening to negotiate the equity grant size, which tends to have more room than base salary. Forward-deployed engineers sit closer to revenue than most IC roles, so framing your past client-facing wins in dollar terms during the offer conversation gives you real ammunition.
+
+Mistral Forward Deployed Engineer Interview Process
+6 rounds
+·
+~5 weeks end to end
+
+Initial Screen
+2 rounds
+1
+Recruiter Screen
+30m
+Video Call
+First, you’ll do a recruiter/HR screen focused on your background, location/work authorization, and what “forward deployed” means for you (travel, customer-facing work, ambiguity). You should expect light probing on your most relevant deployments (LLM apps, RAG/agents, integrations) and how you communicate with non-engineering stakeholders.
+
+general
+behavioral
+engineering
+llm_and_ai_agent
+Tips for this round
+
+Prepare a 60-second narrative tying your experience to customer-facing delivery: discovery → prototype → rollout → measurement.
+Be explicit about constraints you can handle (on-site cadence, time zones, security reviews, enterprise stakeholders) and give an example.
+Have a concise “LLM stack” summary ready (model/provider, prompting, RAG, evals, observability, deployment) and what you owned end-to-end.
+Clarify what you need to succeed: decision-makers in the room, access to data, iteration loops, and a definition of done tied to metrics.
+Ask how projects are staffed (single owner vs pod), expected time-to-demo, and how success is measured in the first 90 days.
+2
+Hiring Manager Screen
+45m
+Video Call
+Next comes a 1:1 with an engineer/lead that can feel like an open-ended technical conversation about current AI/LLM tradeoffs and real deployment constraints. The interviewer will push you to defend decisions (e.g., when to fine-tune vs prompt/RAG, latency vs quality, safety/guardrails) and to reason clearly under follow-up questions.
+
+llm_and_ai_agent
+system_design
+engineering
+behavioral
+
+Technical Assessment
+1 round
+3
+Machine Learning & Modeling
+60m
+Live
+Then you’ll typically face a live PyTorch-heavy implementation exercise similar to building core transformer components (e.g., multi-head self-attention with batching and a causal mask). Expect to write correct, idiomatic code under time pressure while explaining tensor shapes, masking, and numerical pitfalls.
+
+deep_learning
+ml_coding
+llm_and_ai_agent
+engineering
+Tips for this round
+
+Rehearse implementing scaled dot-product attention and multi-head attention from scratch, including shape annotations for (B, T, D) and head splits.
+Memorize common mask patterns (causal/triangular, padding masks) and how broadcasting works in PyTorch to avoid silent shape bugs.
+Talk through complexity and stability: softmax precision, dtype (fp16/bf16), and why you scale by sqrt(d_k).
+Write small sanity checks quickly (assert shapes, compare against torch.nn.MultiheadAttention on tiny inputs) to catch errors early.
+Keep code clean: separate projection layers, reshape/transpose carefully, and comment each transformation step.
+Onsite
+3 rounds
+4
+Presentation
+60m
+presentation
+After that, you’ll present a personal project or prior work and answer a quiz-style set of questions on LLM fundamentals and scaling. You should expect deep follow-ups on what you measured, what failed, how you ran ablations/evals, and what you would do differently in production.
+
+llm_and_ai_agent
+machine_learning
+ml_system_design
+behavioral
+Tips for this round
+
+Structure the talk as: problem → constraints → approach → eval methodology → results → tradeoffs → next steps; keep slides minimal and metric-driven.
+Include at least one failure and how you diagnosed it (bad retrieval, prompt brittleness, tool-call errors, data leakage, or eval mismatch).
+Prepare crisp explanations of scaling laws basics, context length tradeoffs, tokenizer effects, and why fine-tuning can regress behaviors.
+Bring an eval plan: golden sets, LLM-as-judge caveats, regression testing, and how you prevent prompt drift in production.
+Be ready to discuss serving constraints: batching, KV cache, quantization, and when you’d choose smaller models for latency/cost.
+5
+Coding & Algorithms
+60m
+Live
+Expect a collaborative pair-programming round where you work with an engineer to diagnose and fix a bug in an unfamiliar codebase or small module. The focus is less on trick puzzles and more on how you navigate ambiguity, write tests, and communicate while iterating.
+
+algorithms
+data_structures
+engineering
+ml_coding
+Tips for this round
+
+Narrate your debugging loop: reproduce → minimize → hypothesize → instrument/log → fix → regression test.
+Lean on practical tools: unit tests/pytest, breakpoints (pdb), logging, and small deterministic inputs to isolate the failure.
+Ask clarifying questions about expected behavior, edge cases, and interfaces before changing code to avoid thrash.
+Refactor safely: make the smallest change that fixes the bug, then add a test that would have caught it.
+Demonstrate collaboration: propose options, invite feedback, and keep a running list of assumptions as you debug.
+6
+Behavioral
+45m
+Video Call
+Finally, there’s a culture/values fit conversation that emphasizes ownership, pace, and working effectively with customers and internal stakeholders. You’ll be evaluated on judgment in ambiguous situations, ability to ship quickly without cutting critical corners, and how you handle feedback and conflict.
+
+behavioral
+general
+engineering
+product_sense
+
+Tips to Stand Out
+Bring a defensible architecture stance. Practice holding a single design decision under sustained questioning (assumptions, alternatives, failure modes, and metrics) because panels may probe one choice for much of an interview.
+Show you can ship to real customers. Emphasize end-to-end delivery: scoping, data access, security constraints, deployment, monitoring, and iteration loops tied to business outcomes.
+Be fluent in LLM evaluation. Come with a concrete plan for offline/online evals, regression tests, and how you’d detect hallucinations, retrieval failures, and tool-calling breakdowns.
+Train for PyTorch-from-scratch. Rehearse implementing attention/masking and explaining tensor shapes clearly; correctness and clarity matter as much as speed.
+Demonstrate collaborative debugging. Pair programming often rewards communication, test-writing, and systematic diagnosis over cleverness.
+Expect slower or uneven communication. Build your own timeline, follow up politely but firmly, and keep other processes moving given reports of delays/ghosting.
+Common Reasons Candidates Don't Pass
+✗
+Hand-wavy LLM reasoning. Candidates get rejected when they can’t justify fine-tune vs RAG vs prompting choices with constraints, evals, and measurable tradeoffs.
+✗
+Weak fundamentals in core DL implementation. Struggling with attention, masking, tensor shapes, or PyTorch correctness in a live setting is a frequent fail signal.
+✗
+No credible eval/production plan. If you can’t explain how you would measure quality, catch regressions, monitor latency/cost, and handle safety issues, you’ll look research-only or prototype-only.
+✗
+Poor collaboration in pair programming. Silent coding, not asking clarifying questions, or changing lots of code without tests/verification reads as risky for fast-moving deployments.
+✗
+Mismatch with forward-deployed realities. Hesitation about customer-facing work, ambiguity, rapid iteration, or on-site expectations can be interpreted as a poor fit.
+Offer & Negotiation
+
+Forward Deployed Engineer offers at companies like Mistral typically combine a strong base salary with meaningful equity (often stock options for earlier-stage packages, sometimes RSUs depending on structure) and may include a discretionary bonus. The most negotiable levers are level/title (which drives band), equity amount/strike terms, signing bonus, and (if applicable) relocation or travel policies; base salary can move but often within tighter ranges. Anchor negotiations around scope and impact (customer ownership, on-call/support expectations, travel), ask for the leveling rubric used, and trade off between cash and equity depending on your risk tolerance and location cost.
+
+Expect the process to move fast. Mistral is a small team, and from what candidates report, the loop tends to wrap in a few weeks rather than dragging into months. That said, don't confuse speed with sloppiness. Each round filters hard, and the client-scenario simulation (where you scope and architect an AI solution for a realistic enterprise problem) seems to carry outsized weight relative to the coding screen.
+
+The most common failure mode, based on candidate accounts, is under-preparing for that simulation round. People show up sharp on ML theory and clean on coding, then stumble when asked to translate a messy business problem into a deployable architecture using Mistral's model lineup. If you can't think on your feet about data residency constraints, retrieval design with pgvector, and realistic deployment timelines while communicating clearly to a non-technical stakeholder, the technical rounds won't save you.
+
+Mistral Forward Deployed Engineer Interview Questions
+LLMs, RAG, and Agentic AI (Applied)
+Expect questions that force you to turn messy customer requirements into a concrete LLM/RAG/agent plan, including tool-use, guardrails, and evaluation. Candidates often stumble by describing generic patterns instead of specifying prompts, retrieval strategy, and failure modes.
+
+A customer wants a “chat with our internal docs” feature in a Mistral-hosted app backed by Supabase Postgres, and complains about plausible but wrong answers. Specify your RAG plan: chunking, embedding model choice, retrieval (including filters), prompt template, and 3 concrete failure modes you will test for.
+
+Medium
+RAG Implementation and Evaluation
+Sample Answer
+
+Most candidates default to “add a vector store and a system prompt that says be truthful”, but that fails here because it does not control retrieval quality or enforce citation groundedness. You need explicit chunking rules (structure-aware for Markdown and PDFs), metadata for tenant, doc type, and freshness, and a retrieval policy like hybrid search plus MMR with a tuned 
+k
+k. Your prompt must require quoted evidence and a refusal path when evidence is missing, plus you validate with targeted tests like contradictory docs, stale policy overrides, and near-duplicate chunks causing merged hallucinations.
+
+You are building a support agent that can call two tools, "search_tickets" and "create_refund", and you must guarantee it never refunds more than $100 without human approval. Describe the exact guardrail design across prompt, tool schema, and runtime checks, plus how you will log and evaluate violations.
+
+Easy
+Agentic Tool Use and Guardrails
+Sample Answer
+
+Enforce the 
+100
+l
+i
+m
+i
+t
+w
+i
+t
+h
+d
+e
+t
+e
+r
+m
+i
+n
+i
+s
+t
+i
+c
+r
+u
+n
+t
+i
+m
+e
+c
+h
+e
+c
+k
+s
+a
+n
+d
+t
+y
+p
+e
+d
+t
+o
+o
+l
+s
+c
+h
+e
+m
+a
+s
+,
+n
+o
+t
+w
+i
+t
+h
+p
+r
+o
+m
+p
+t
+i
+n
+s
+t
+r
+u
+c
+t
+i
+o
+n
+s
+.
+P
+u
+t
+t
+h
+e
+l
+i
+m
+i
+t
+i
+n
+t
+h
+e
+t
+o
+o
+l
+c
+o
+n
+t
+r
+a
+c
+t
+(
+a
+m
+o
+u
+n
+t
+i
+s
+r
+e
+q
+u
+i
+r
+e
+d
+,
+n
+u
+m
+e
+r
+i
+c
+,
+a
+n
+d
+c
+a
+p
+p
+e
+d
+)
+,
+a
+d
+d
+a
+s
+e
+p
+a
+r
+a
+t
+e
+"
+r
+e
+q
+u
+e
+s
+t
+a
+p
+p
+r
+o
+v
+a
+l
+"
+t
+o
+o
+l
+f
+o
+r
+e
+x
+c
+e
+p
+t
+i
+o
+n
+s
+,
+a
+n
+d
+h
+a
+r
+d
+−
+f
+a
+i
+l
+o
+r
+r
+o
+u
+t
+e
+t
+o
+h
+u
+m
+a
+n
+w
+h
+e
+n
+t
+h
+e
+m
+o
+d
+e
+l
+r
+e
+q
+u
+e
+s
+t
+s
+m
+o
+r
+e
+t
+h
+a
+n
+100limitwithdeterministicruntimechecksandtypedtoolschemas,notwithpromptinstructions.Putthelimitinthetoolcontract(amountisrequired,numeric,andcapped),addaseparate"request 
+a
+​
+ pproval"toolforexceptions,andhard−failorroutetohumanwhenthemodelrequestsmorethan100. Log every tool call with inputs, model messages, and a policy decision record, then evaluate with adversarial prompts, jailbreak attempts, and replay tests that confirm the runtime gate catches all over-limit paths.
+
+A customer wants an “agentic analyst” that answers questions over their Postgres data in Supabase, but PII must never leave their VPC and the agent must not run arbitrary SQL. Propose an architecture and prompting approach that still supports multi-step reasoning and tool use, and include one concrete mitigation for prompt injection via database content.
+
+Hard
+Agent Architecture and Security
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more LLMs, RAG, and Agentic AI (Applied) questions
+Fullstack Engineering & System Design for AI Products
+Most candidates underestimate how much end-to-end product architecture matters when the AI is only one component in the loop. You’ll need to explain APIs, auth, state, latency budgets, streaming UX, and how prototypes become maintainable production systems.
+
+You are shipping a chat UI for a customer that streams tokens from a Mistral model, supports tool calls, and persists conversations in Supabase Postgres. What API shape and database tables do you use so the UI can resume mid-stream after a refresh without duplicating messages?
+
+Easy
+Streaming chat architecture
+Sample Answer
+
+Use a server-issued message ID and an append-only event log persisted in Postgres, then make the client reconcile by last committed event. Store each assistant turn as events (tokens, tool_call_started, tool_result, final) keyed by conversation_id and message_id, and stream over SSE or WebSocket with monotonic sequence numbers. On refresh, the client fetches events after the last seen sequence number, then replays to reconstruct the exact UI state. This avoids duplicate assistant bubbles because idempotency is enforced by (message_id, sequence) uniqueness.
+
+A customer wants RAG over 5 million internal docs in Supabase, and your KPI is answer latency under 2.0 seconds p95 while keeping citations correct. Do you build retrieval as a synchronous API in the chat request, or as an async precompute pipeline with cached retrieval results, and why?
+
+Medium
+RAG latency and caching design
+
+k
+
+You are deploying an agentic workflow where the model can call internal tools (billing lookup, ticket search, redact PII) and the customer requires strict tenant isolation and auditability. Design the auth, tool execution, and logging so a prompt-injected tool call cannot exfiltrate another tenant’s data.
+
+Hard
+Secure tool calling and tenancy
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more Fullstack Engineering & System Design for AI Products questions
+ML System Design & Productionization (Practical MLOps)
+Your ability to reason about shipping reliable model-backed features is tested through choices like model routing, caching, fallbacks, monitoring, and offline/online evaluation. The common pitfall is over-indexing on model quality without addressing cost, latency, and operational failure handling.
+
+You ship a Mistral-powered RAG assistant in a Node.js app for a customer support dashboard (React, Supabase Postgres, vector store) and p95 latency jumps from 1.5s to 6s after enabling citations. Where do you add caching, and how do you prevent stale answers when knowledge base docs update?
+
+Easy
+Caching, invalidation, and latency budgets
+Sample Answer
+
+You could cache final LLM responses keyed by (user query, top-
+k
+k doc ids, prompt template version), or cache retrieval artifacts (embeddings and top-
+k
+k hits) and rerun generation each time. Retrieval caching wins here because citations tie you to specific chunks, and you can invalidate cleanly by doc version or chunk hash without risking stale grounded content. Add a short TTL for hot queries, and a hard invalidation path on doc upsert that bumps a knowledge base version used in the cache key.
+
+A customer-facing agent uses tool calls (CRM lookup, ticket creation) and Mistral LLM routing (small model then large model fallback), and you see a spike in duplicated tickets and cost. Describe how you would instrument, detect, and stop the failure within one day without turning the feature off.
+
+Medium
+Observability, routing, and guardrails for agentic workflows
+
+>
+
+You need to productionize a fine-tuned open-source Mistral model for summarizing internal call transcripts, and the customer demands no PII leaks plus consistent tone, while keeping p95 under 2s. What offline eval, online monitoring, and rollback plan do you design, and what metrics decide a rollback?
+
+Hard
+Offline and online evaluation, safety, and rollback criteria
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more ML System Design & Productionization (Practical MLOps) questions
+Backend + ML Coding (TypeScript/Python)
+The bar here isn’t whether you can write code, it’s whether you can implement an AI-facing endpoint that is correct, safe, and debuggable under real constraints. You’ll be judged on API design, streaming or async patterns, testability, and clean integration with model calls and retrieval.
+
+Implement a Python FastAPI endpoint POST /v1/rag/answer that streams Server-Sent Events with tokens from a Mistral chat completion, after retrieving top-
+k
+k chunks from a local vector store built with TF-IDF cosine similarity (no external DB). Include request validation, deterministic chunking, and a per-request trace_id in every SSE event.
+
+Easy
+RAG Endpoint, Streaming SSE
+Sample Answer
+
+Reason through it: Walk through the logic step by step as if thinking out loud. Validate inputs, then chunk documents deterministically so retrieval is stable across runs. Fit TF-IDF on chunks, compute cosine similarity to the query, pick top-
+k
+k, and build a prompt with citations. Start a streaming response that yields SSE events containing trace_id and token text, and always end with a final event so clients can close cleanly.
+
+Python
+
+Copy
+from __future__ import annotations
+
+import asyncio
+import json
+import math
+import re
+import uuid
+from dataclasses import dataclass
+from typing import Any, AsyncGenerator, Dict, List, Optional, Tuple
+
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel, Field, conint
+
+app = FastAPI(title="Mistral FDE RAG Demo")
+
+
+# -----------------------------
+# Data model
+# -----------------------------
+class RagAnswerRequest(BaseModel):
+    query: str = Field(..., min_length=1, max_length=2000)
+    documents: List[str] = Field(..., min_items=1, max_items=50)
+    k: conint(ge=1, le=10) = 4
+    max_context_chars: conint(ge=200, le=20000) = 6000
+
+
+@dataclass(frozen=True)
+class Chunk:
+    doc_id: int
+    chunk_id: int
+    text: str
+
+
+# -----------------------------
+# Deterministic chunking
+# -----------------------------
+_WS_RE = re.compile(r"\s+")
+
+
+def normalize_ws(text: str) -> str:
+    return _WS_RE.sub(" ", text).strip()
+
+
+def chunk_text(text: str, chunk_size: int = 500, overlap: int = 100) -> List[str]:
+    """Deterministic, character-based chunking with overlap.
+
+    This is intentionally simple and stable for interview purposes.
+    """
+    text = normalize_ws(text)
+    if not text:
+        return []
+
+    if overlap >= chunk_size:
+        raise ValueError("overlap must be smaller than chunk_size")
+
+    chunks: List[str] = []
+    start = 0
+    n = len(text)
+    while start < n:
+        end = min(n, start + chunk_size)
+        chunk = text[start:end]
+        chunks.append(chunk)
+        if end == n:
+            break
+        start = end - overlap
+    return chunks
+
+
+# -----------------------------
+# Tiny TF-IDF + cosine retrieval
+# -----------------------------
+_TOKEN_RE = re.compile(r"[A-Za-z0-9_]+")
+
+
+def tokenize(text: str) -> List[str]:
+    return [t.lower() for t in _TOKEN_RE.findall(text)]
+
+
+def build_tfidf_index(chunks: List[Chunk]) -> Tuple[Dict[str, float], List[Dict[str, float]]]:
+    """Returns (idf, tfidf_vectors_per_chunk)."""
+    token_lists = [tokenize(c.text) for c in chunks]
+    df: Dict[str, int] = {}
+    for toks in token_lists:
+        for tok in set(toks):
+            df[tok] = df.get(tok, 0) + 1
+
+    n_docs = len(chunks)
+    idf: Dict[str, float] = {}
+    for tok, dfi in df.items():
+        # Smoothed IDF: log((N + 1) / (df + 1)) + 1
+        idf[tok] = math.log((n_docs + 1.0) / (dfi + 1.0)) + 1.0
+
+    vectors: List[Dict[str, float]] = []
+    for toks in token_lists:
+        tf: Dict[str, int] = {}
+        for tok in toks:
+            tf[tok] = tf.get(tok, 0) + 1
+        # L2-normalized tf-idf
+        vec: Dict[str, float] = {}
+        norm2 = 0.0
+        for tok, cnt in tf.items():
+            val = float(cnt) * idf.get(tok, 0.0)
+            if val:
+                vec[tok] = val
+                norm2 += val * val
+        norm = math.sqrt(norm2) if norm2 > 0 else 1.0
+        for tok in list(vec.keys()):
+            vec[tok] /= norm
+        vectors.append(vec)
+
+    return idf, vectors
+
+
+def tfidf_vector(text: str, idf: Dict[str, float]) -> Dict[str, float]:
+    toks = tokenize(text)
+    tf: Dict[str, int] = {}
+    for tok in toks:
+        tf[tok] = tf.get(tok, 0) + 1
+    vec: Dict[str, float] = {}
+    norm2 = 0.0
+    for tok, cnt in tf.items():
+        if tok not in idf:
+            continue
+        val = float(cnt) * idf[tok]
+        vec[tok] = val
+        norm2 += val * val
+    norm = math.sqrt(norm2) if norm2 > 0 else 1.0
+    for tok in list(vec.keys()):
+        vec[tok] /= norm
+    return vec
+
+
+def cosine_sparse(a: Dict[str, float], b: Dict[str, float]) -> float:
+    if not a or not b:
+        return 0.0
+    # Iterate over smaller dict
+    if len(a) > len(b):
+        a, b = b, a
+    s = 0.0
+    for k, va in a.items():
+        vb = b.get(k)
+        if vb is not None:
+            s += va * vb
+    return s
+
+
+def top_k_chunks(query: str, chunks: List[Chunk], k: int) -> List[Tuple[Chunk, float]]:
+    idf, vectors = build_tfidf_index(chunks)
+    qv = tfidf_vector(query, idf)
+    scored: List[Tuple[int, float]] = []
+    for i, cv in enumerate(vectors):
+        scored.append((i, cosine_sparse(qv, cv)))
+    scored.sort(key=lambda x: x[1], reverse=True)
+    top = scored[:k]
+    return [(chunks[i], score) for i, score in top]
+
+
+# -----------------------------
+# Mistral streaming stub
+# -----------------------------
+async def mistral_stream_chat_completion(prompt: str) -> AsyncGenerator[str, None]:
+    """Stubbed token stream.
+
+    In production you would call Mistral's SDK with stream=True and yield deltas.
+    """
+    # Simulate tokens by splitting on whitespace
+    for tok in prompt.split():
+        await asyncio.sleep(0.005)
+        yield tok + " "
+
+
+# -----------------------------
+# SSE helpers
+# -----------------------------
+
+def sse_event(event: str, data: Dict[str, Any]) -> str:
+    payload = json.dumps(data, ensure_ascii=False)
+    # SSE format: event + data lines, then a blank line
+    return f"event: {event}\n" + f"data: {payload}\n\n"
+
+
+def build_prompt(query: str, retrieved: List[Tuple[Chunk, float]], max_context_chars: int) -> str:
+    context_parts: List[str] = []
+    used = 0
+    for chunk, score in retrieved:
+        snippet = chunk.text
+        block = f"[doc:{chunk.doc_id} chunk:{chunk.chunk_id} score:{score:.3f}] {snippet}"
+        if used + len(block) + 1 > max_context_chars:
+            break
+        context_parts.append(block)
+        used += len(block) + 1
+
+    context = "\n".join(context_parts)
+    return (
+        "You are a helpful assistant. Answer using only the context. "
+        "If insufficient, say you do not know. Cite sources as [doc:X chunk:Y].\n\n"
+        f"Context:\n{context}\n\n"
+        f"Question: {query}\nAnswer:"
+    )
+
+
+@app.post("/v1/rag/answer")
+async def rag_answer(req: RagAnswerRequest):
+    # Validate documents are not empty after normalization
+    normalized_docs = [normalize_ws(d) for d in req.documents]
+    if any(not d for d in normalized_docs):
+        raise HTTPException(status_code=400, detail="documents contains an empty string")
+
+    # Build chunks deterministically
+    chunks: List[Chunk] = []
+    for doc_id, doc in enumerate(normalized_docs):
+        parts = chunk_text(doc, chunk_size=500, overlap=100)
+        for chunk_id, part in enumerate(parts):
+            chunks.append(Chunk(doc_id=doc_id, chunk_id=chunk_id, text=part))
+
+    if not chunks:
+        raise HTTPException(status_code=400, detail="no chunks could be created")
+
+    retrieved = top_k_chunks(req.query, chunks, req.k)
+    prompt = build_prompt(req.query, retrieved, req.max_context_chars)
+
+    trace_id = str(uuid.uuid4())
+
+    async def event_stream() -> AsyncGenerator[bytes, None]:
+        # Start event
+        yield sse_event("start", {"trace_id": trace_id}).encode("utf-8")
+
+        # Stream tokens
+        async for token in mistral_stream_chat_completion(prompt):
+            yield sse_event("token", {"trace_id": trace_id, "text": token}).encode("utf-8")
+
+        # End event with retrieval metadata for debuggability
+        sources = [
+            {
+                "doc_id": c.doc_id,
+                "chunk_id": c.chunk_id,
+                "score": float(score),
+                "preview": c.text[:120],
+            }
+            for c, score in retrieved
+        ]
+        yield sse_event("end", {"trace_id": trace_id, "sources": sources}).encode("utf-8")
+
+    return StreamingResponse(event_stream(), media_type="text/event-stream")
+
+
+# For local testing:
+# uvicorn this_file:app --reload
+Write Python code that evaluates a Mistral function-calling agent offline by replaying a list of tool-call traces, then computes tool-call precision, recall, and 
+F
+1
+F 
+1
+​
+  where a prediction matches ground truth if tool_name matches and all required args match exactly. Return per-tool metrics and macro-average, and include a failure report with the top 5 most common mismatch reasons.
+
+Hard
+Agent Tool-Call Evaluation
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more Backend + ML Coding (TypeScript/Python) questions
+Databases & Vector Retrieval (Postgres/Supabase + pgvector)
+Rather than textbook SQL, you’ll be asked to model and query data that powers RAG features: documents, chunks, embeddings, metadata, and access control. Candidates commonly miss edge cases like tenant isolation, deduplication, and ranking/filtering tradeoffs.
+
+You are building multi-tenant RAG on Supabase with pgvector. Write a query that returns the top 10 chunks for a given 
+q
+u
+e
+r
+y
+_
+e
+m
+b
+e
+d
+d
+i
+n
+g
+query_embedding and 
+t
+e
+n
+a
+n
+t
+_
+i
+d
+tenant_id, filtering out soft-deleted chunks and enforcing that the user is allowed to read the parent document.
+
+Easy
+Vector Similarity Search and ACL
+Sample Answer
+
+This question is checking whether you can translate RAG retrieval into SQL that is safe and production-minded. You need correct tenant isolation, soft-delete handling, and ACL joins before you even think about ranking. If you miss the ACL or tenant predicate, you leak data across customers. If you rank before filtering, you waste work and get unstable results.
+
+SQL
+
+Copy
+-- Parameters:
+--   :tenant_id           uuid
+--   :user_id             uuid
+--   :query_embedding     vector(1536)
+--   :match_count         int
+
+SELECT
+  c.id AS chunk_id,
+  c.document_id,
+  c.chunk_index,
+  c.content,
+  (c.embedding <-> :query_embedding) AS distance
+FROM rag_chunks AS c
+JOIN rag_documents AS d
+  ON d.id = c.document_id
+ AND d.tenant_id = :tenant_id
+ AND d.deleted_at IS NULL
+JOIN rag_document_acl AS a
+  ON a.document_id = d.id
+ AND a.user_id = :user_id
+ AND a.can_read = TRUE
+WHERE c.tenant_id = :tenant_id
+  AND c.deleted_at IS NULL
+ORDER BY c.embedding <-> :query_embedding
+LIMIT COALESCE(:match_count, 10);
+Ingest can create duplicate chunks when a customer re-uploads the same PDF, and you want retrieval to return only the newest version per (document_source_id, chunk_hash). Write a query that searches by embedding but deduplicates so you keep only the most recent chunk per key.
+
+Medium
+Deduplication with Window Functions
+
+
+A customer complains that RAG answers drift because retrieval sometimes returns many chunks from one long document and starves other sources. Write a query that returns the top 3 chunks per document (by similarity) and then the overall top 12 across documents for a tenant.
+
+Hard
+Diversity Constraints in Retrieval
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more Databases & Vector Retrieval (Postgres/Supabase + pgvector) questions
+Cloud Infrastructure & Deployment for AI Workloads
+In practice you’ll need to justify deployment decisions that keep latency low and incidents rare while iterating fast. Interviewers look for crisp thinking on containerization, secrets, observability, autoscaling, and handling bursty inference traffic.
+
+You are deploying a customer-specific RAG API (Node.js) that calls a Mistral model plus Supabase Postgres for chat history and a vector store, and P95 latency just regressed from 900 ms to 2.4 s. What are the first three telemetry signals you add or inspect (metrics, logs, traces) to isolate whether the bottleneck is model inference, retrieval, or database, and what is one fast mitigation you would ship the same day?
+
+Easy
+Observability and Latency Triage
+Sample Answer
+
+The standard move is end-to-end tracing with span timing around (1) retrieval, (2) DB reads and writes, and (3) model call, plus request rate, error rate, and token counts as top-level metrics. But here, payload shape matters because a single prompt bloat or retrieval fanout spike can double latency without obvious CPU changes, so you also track prompt tokens, retrieved chunk count, and per-request concurrency. Same-day mitigation is usually bounding retrieval (top-
+k
+k, max context tokens) and turning on response streaming to cut time-to-first-token. If DB is the culprit, add a quick index on the hot query path or reduce write frequency by batching chat history.
+
+A customer runs a voice agent using LiveKit that calls a Mistral model for every turn, traffic is bursty (10x spikes) and they demand P99 under 1.2 s with a hard cap on monthly GPU spend. Describe an autoscaling strategy across GPU inference, API workers, and Redis or queueing that prevents thundering herds, and specify what you would do when the model becomes the bottleneck but you cannot add more GPUs.
+
+Hard
+Autoscaling and Capacity Control for Bursty Inference
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more Cloud Infrastructure & Deployment for AI Workloads questions
+Behavioral: Forward-Deployed & Startup Execution
+When you’re embedded with customers, the signal comes from how you navigate ambiguity, push back productively, and deliver under shifting priorities. You should show strong ownership, fast learning loops, and crisp communication from problem to shipped outcome.
+
+You are embedded with a customer building a RAG assistant on Mistral, and after a week the PM asks for "higher accuracy" but cannot define success and keeps changing the target workflow. What concrete plan do you propose in the next 48 hours to lock scope, define acceptance metrics, and ship a first production slice in their Node.js and Supabase stack?
+
+Easy
+Forward-Deployed Execution and Stakeholder Alignment
+Sample Answer
+
+Get this wrong in production and you ship a demo that cannot be evaluated, then you thrash on prompts while trust collapses. The right call is to force a narrow, testable outcome: pick 1 to 2 user journeys, define an offline eval set of real queries, set 2 to 3 acceptance metrics (task success rate, groundedness, latency, cost per request), then timebox a vertical slice (React UI, Node API, Supabase tables, vector store) behind a feature flag. Put changes behind a simple weekly cadence: measure, ship, and freeze interfaces unless a metric moves.
+
+A customer wants an agentic workflow that can call internal tools, and they ask you to let the LLM directly execute SQL against Supabase and trigger external webhooks because "we need it fast." How do you push back while still shipping, and what specific guardrails and rollout steps do you require before allowing tool use in production?
+
+Hard
+Risk Management for Agents and Tooling
+
+Unlock the full solution
+
+View detailed answers and practice in our question bank
+
+View Solution
+Practice more Behavioral: Forward-Deployed & Startup Execution questions
+The distribution reveals a role where you can't compartmentalize: a question about building a RAG assistant on Supabase with pgvector will simultaneously test your retrieval design, your streaming API implementation in TypeScript, and your ability to hit a p95 latency target in a client's cloud environment. The compounding difficulty comes from applied AI and fullstack architecture bleeding into each other, because Mistral's forward-deployed engineers ship entire products into environments like France's AI for Citizens program, not isolated model components. If you're prepping mostly with algorithm puzzles or ML theory flashcards, you're optimizing for the wrong interview: the actual bar is closer to "build a multi-tenant RAG app on Mistral's API with proper auth, vector retrieval, and monitoring, then defend your deployment choices to someone who's done it at a client site."
+
+Practice questions across every weighted area at datainterview.com/questions.
+
+How to Prepare for Mistral Forward Deployed Engineer Interviews
+Know the Business
+
+Updated Q1 2026
+Official mission
+
+“We exist to make frontier AI accessible to everyone.”
+
+What it actually means
+
+Mistral AI's real mission is to democratize frontier artificial intelligence by providing both open-source and commercial models. They aim to empower organizations to build tailored, efficient, and transparent AI systems, challenging the dominance of proprietary, opaque AI solutions.
+
+Paris, France
+Hybrid - 3 days/week
+Funding & Scale
+
+Stage
+Series C
+
+Total Raised
+$2B
+
+Last Round
+Q1 2025
+
+Valuation
+$14B
+
+Employees
+700
+
+Business Segments and Where DS Fits
+
+Foundational AI Models
+
+Develops and releases state-of-the-art open multimodal and multilingual AI models, including large language models (LLMs) and specialized models for tasks like speech-to-text and optical character recognition (OCR). Focuses on achieving the best performance-to-cost ratio and open-source availability.
+
+DS focus: Model training and optimization, multimodal and multilingual capabilities, instruction fine-tuning, sparse mixture-of-experts architecture, efficient inference support, low-precision execution.
+
+AI Solutions for Public Sector
+
+Collaborates with public services and institutions to enable transformation and innovation with AI, helping them build AI-powered solutions that serve, protect, and enable citizens, and ensuring strategic autonomy.
+
+DS focus: Tailoring AI solutions for public services, improving efficiency and effectiveness, fostering AI research and development, stimulating economic development through AI adoption in alignment with state goals.
+
+Current Strategic Priorities
+
+Empower the developer community and put AI in people’s hands through distributed intelligence by open-sourcing models.
+Provide a strong foundation for further customization across the enterprise and developer communities with open-source models.
+Clear the path to seamless conversation between people speaking different languages.
+Build a roster of specialist models meant to perform narrow tasks.
+Position Mistral as a European-native, multilingual, open-source alternative to proprietary US models.
+Be the sovereign alternative, compliant with all regulations that may exist within the EU.
+Harness AI for the benefit of citizens, transforming public services and institutions, and catalyzing national innovation.
+Mistral is positioning itself as the sovereign, open-weight alternative to proprietary US models, and that positioning isn't just marketing. Their AI for Citizens program targets public-sector transformation with strict EU data residency compliance, while CEO Arthur Mensch has publicly argued that AI concentration among a few firms risks market abuse. The company reported revenue of approximately €137M with 81% year-over-year growth, and its model lineup now spans Mistral 3 for general reasoning, Codestral for code generation, and Voxtral for real-time multilingual translation.
+
+For your "why Mistral" answer, skip the abstract open-source philosophy speech. Interviewers have heard it a hundred times. What separates strong candidates: connecting Mistral's open-weight model distribution to a specific technical advantage you'd exploit on the job. Maybe it's the ability to self-host inside a government client's infrastructure to meet data residency rules, or fine-tuning Codestral on a client's proprietary codebase without routing code through external APIs. Anchor your answer in a concrete deployment scenario that only makes sense because of how Mistral ships its models.
+
+Try a Real Interview Question
+RAG Chunk Selection with Token Budget
+python
+Implement a function that selects a subset of retrieved RAG chunks under a token budget 
+B
+B while preserving ranking and removing near-duplicates. Input is a list of chunks with fields: id (str), score (float), tokens (int), text (str), and a Jaccard threshold 
+t
+t on word sets; output is a list of selected chunk ids in order of decreasing score such that total tokens 
+≤
+B
+≤B and any two selected chunks have Jaccard similarity 
+<
+t
+<t.
+
+Starter Code
+Solution
+Copy
+Python
+
+Copy
+from typing import List, Dict
+
+
+def select_rag_chunks(chunks: List[Dict], budget_tokens: int, jaccard_threshold: float) -> List[str]:
+    """Select RAG chunks under a token budget, deduplicating by Jaccard similarity.
+
+    Args:
+        chunks: List of dicts with keys: 'id' (str), 'score' (float), 'tokens' (int), 'text' (str).
+        budget_tokens: Maximum total tokens allowed.
+        jaccard_threshold: Reject a candidate chunk if its word-set Jaccard similarity with any selected chunk is >= this threshold.
+
+    Returns:
+        List of selected chunk ids in decreasing score order.
+    """
+    pass
+Python
+
+Copy
+from __future__ import annotations
+
+from typing import List, Dict, Set
+import re
+
+
+_WORD_RE = re.compile(r"[A-Za-z0-9]+")
+
+
+def _word_set(text: str) -> Set[str]:
+    return {m.group(0).lower() for m in _WORD_RE.finditer(text or "")}
+
+
+def _jaccard(a: Set[str], b: Set[str]) -> float:
+    if not a and not b:
+        return 0.0
+    if not a or not b:
+        return 0.0
+    inter = len(a & b)
+    if inter == 0:
+        return 0.0
+    union = len(a | b)
+    return inter / union if union else 0.0
+
+
+def select_rag_chunks(chunks: List[Dict], budget_tokens: int, jaccard_threshold: float) -> List[str]:
+    """Select RAG chunks under a token budget, deduplicating by Jaccard similarity.
+
+    Selection algorithm:
+      - Sort by score descending, tie-break by lower tokens then id.
+      - Greedily accept chunks if they fit in remaining token budget and are not near-duplicates of already selected chunks.
+
+    Args:
+        chunks: List of dicts with keys: 'id' (str), 'score' (float), 'tokens' (int), 'text' (str).
+        budget_tokens: Maximum total tokens allowed.
+        jaccard_threshold: Reject a candidate chunk if its word-set Jaccard similarity with any selected chunk is >= this threshold.
+
+    Returns:
+        List of selected chunk ids in decreasing score order.
+    """
+    if budget_tokens <= 0 or not chunks:
+        return []
+    if not (0.0 <= jaccard_threshold <= 1.0):
+        raise ValueError("jaccard_threshold must be in [0, 1]")
+
+    normalized = []
+    for c in chunks:
+        if not isinstance(c, dict):
+            continue
+        cid = c.get("id")
+        score = c.get("score")
+        tokens = c.get("tokens")
+        text = c.get("text", "")
+        if cid is None or score is None or tokens is None:
+            continue
+        try:
+            score_f = float(score)
+            tokens_i = int(tokens)
+        except (TypeError, ValueError):
+            continue
+        if tokens_i <= 0:
+            continue
+        normalized.append((str(cid), score_f, tokens_i, str(text)))
+
+    normalized.sort(key=lambda x: (-x[1], x[2], x[0]))
+
+    selected_ids: List[str] = []
+    selected_sets: List[Set[str]] = []
+    used = 0
+
+    for cid, score, tok, text in normalized:
+        if used + tok > budget_tokens:
+            continue
+
+        cand_set = _word_set(text)
+        is_dup = False
+        if jaccard_threshold > 0.0:
+            for s in selected_sets:
+                if _jaccard(cand_set, s) >= jaccard_threshold:
+                    is_dup = True
+                    break
+        if is_dup:
+            continue
+
+        selected_ids.append(cid)
+        selected_sets.append(cand_set)
+        used += tok
+        if used >= budget_tokens:
+            break
+
+    return selected_ids
+700+ ML coding problems with a live Python executor.
+
+Practice in the Engine
+From what candidates report, Mistral's coding rounds lean toward tasks that feel like slices of real client work: API integration, structured data processing, async orchestration. Pure algorithm puzzles seem less common, though you shouldn't ignore fundamentals entirely. Practice problems that mix model API calls with data transformation in both Python and TypeScript at datainterview.com/coding.
+
+Test Your Readiness
+How Ready Are You for Mistral Forward Deployed Engineer?
+
+1 / 10
+LLMs and Prompting
+Can you explain the practical tradeoffs between temperature, top_p, and max_tokens, and how you would choose them for a customer-facing assistant versus a code generation tool?

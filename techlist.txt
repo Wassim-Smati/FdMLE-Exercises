@@ -1,0 +1,48 @@
+On t'attendra TRÈS FORT sur la maîtrise du code Python/PyTorch, les bases fondamentales des LLM/Transformers, et la capacité à construire un pipeline RAG/Agent simple et propre (API + SQL/Vector DB).
+Voici le tri sélectif de la liste, découpé par priorité pour ton entretien de stage :
+
+🔴 1. LES INCONTOURNABLES (À maîtriser absolument pour le stage)
+C'est ce qui fera l'objet du live coding et des exercices techniques.
+
+A. Code & Frameworks de base
+Python (Expertise indispensable, manipulation de structures de données, async basique).
+PyTorch : Manipulation des tenseurs, dimensions $(B, T, D)$, reshape, transpose, broadcasting.
+FastAPI + Pydantic : Savoir créer un endpoint REST propre (POST /predict ou POST /rag/answer) avec validation de données.
+SQL / Postgres (Bases) : Savoir écrire des requêtes SELECT, JOIN, WHERE, filtrage par tenant_id ou deleted_at.
+Pytest & Pdb : Savoir écrire un test unitaire simple et déboguer son code en live.
+
+B. Core Deep Learning & LLM (Théorie & Live Coding)
+Architecture Transformer : Savoir réexpliquer et coder From-Scratch :
+Multi-Head Self-Attention (MHA) & Scaled Dot-Product Attention (formule $\text{Softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$).
+Masques : Masque causal (attention triangulaire pour la génération autoregressive) et masque de padding.
+Tokenization & Embeddings : Comprendre le rôle du tokenizer, la notion d'espace vectoriel d'embeddings.
+
+C. RAG (Retrieval-Augmented Generation) & Recherche
+Pipeline RAG basique : Document -> Chunks -> Embeddings -> Vector Store -> Retrieval -> Prompt -> Réponse LLM.
+Chunking : Stratégies de découpage (taille de chunk, overlap / chevauchement).
+Métriques de Similarité : Cosine Similarity (similarité cosinus), L2 Distance, TF-IDF (pour comparer recherche dense vs sparse).
+Vector Search / pgvector : Comprendre comment on fait une recherche des $k$ plus proches voisins ($k$-NN / top-$k$).
+
+D. Agents & Prompting
+Prompt Engineering & System Prompts : Structurer un prompt avec contexte, instructions et contraintes de format.
+Tool Calling (Appel d'outils) : Comprendre le principe où le LLM génère du JSON structuré pour appeler une fonction/API.
+Grounding & Halucinations : Exiger des citations/preuves dans le prompt, gérer le cas où la réponse est absente.
+Prompt Injection (Bases) : Comprendre le risque quand un utilisateur injecte des instructions malveillantes dans l'entrée.
+
+
+🟡 2. LES NOTIONS À CONNAÎTRE (Good to have / En parler intelligemment)
+
+Pas besoin d'être un expert, mais savoir de quoi il s'agit si on t'impose la question.
+
+LangChain / LlamaIndex : Connaître le principe, mais être capable d'expliquer pourquoi coder son propre pipeline RAG en Python pur est souvent plus propre.
+Types de précision (fp16, bf16) & Quantization : Savoir pourquoi on réduit la précision (gain mémoire GPU et vitesse).
+
+KV Cache : Comprendre l'idée de mettre en cache les clés/valeurs $K$ et $V$ lors de la génération mot à mot pour éviter de tout re-calculer.
+
+Évaluation (Offline Evals) :
+    Métriques classiques : Precision, Recall, F1-score.
+    LLM-as-a-Judge (utiliser un second LLM pour noter la pertinence).
+
+Recherche Hybride & Jaccard : Recherche dense (vectorielle) + sparse (mots-clés/TF-IDF), et filtrage de doublons avec le coefficient de Jaccard.
+
+Guardrails déterministes : Préférer valider un paramètre d'outil avec du code Python/Pydantic plutôt que de se fier uniquement à l'instruction du prompt.
