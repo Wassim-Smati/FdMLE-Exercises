@@ -6,7 +6,7 @@ Fichier à reviewer par le candidat en vue du call Mistral AI.
 
 import math
 import torch
-import torch.nn as nn 
+import torch.nn as nn
 from typing import List, Dict, Any
 
 
@@ -17,7 +17,7 @@ class PyTorchVectorSearchService:
         norm_a = torch.norm(vec_a)
         norm_b = torch.norm(vec_b)
         
-        return (dot_product / torch.clamp(norm_a * norm_b, min=eps))
+        return dot_product / (norm_a * norm_b)
 
 
 class TransformerAttentionDecoder(nn.Module):
@@ -40,41 +40,30 @@ class TransformerAttentionDecoder(nn.Module):
         return torch.matmul(attn_weights, v)
 
 
-class PyTorchLLMInferenceEngine:                                    
+class PyTorchLLMInferenceEngine:
     def __init__(self, model_name: str, device: str = "cuda"):
         self.device = device
         self.model = TransformerAttentionDecoder(d_model=512, num_heads=8)
         
         # Déplacement du modèle sur GPU CUDA
         if torch.cuda.is_available() and device == "cuda":
-            self.model.to("cuda") 
+            self.model.to("cuda")
 
     def generate_tokens_autoregressive(self, input_ids: torch.Tensor, max_new_tokens: int = 10) -> torch.Tensor:
+        current_sequence = input_ids 
+        kv_cache = torch.empty(0)
 
-        input_ids = tensor.to(self.device)
-
-        with torch.no_grad(): 
-            current_sequence = input_ids 
-            kv_cache = torch.empty(0)
-
-            batch_size, seq_len =  input_ids.shape
-            max_seq_len = max_new_tokens + seq_len
+        for _ in range(max_new_tokens):
+            logits = self.model(current_sequence)
+            next_token_logits = logits[:, -1, :]
             
-            kv_cache = torch.zeros((batch_size, max_seq_len), device=self.device)
+            new_kv = next_token_logits.unsqueeze(1)
+            kv_cache = torch.cat([kv_cache, new_kv], dim=1) if kv_cache.numel() > 0 else new_kv
+            
+            next_token_id = torch.argmax(next_token_logits, dim=-1, keepdim=True)
+            current_sequence = torch.cat([current_sequence, next_token_id], dim=1)
 
-            for _ in range(max_new_tokens):
-                logits = self.model(current_sequence)
-                next_token_logits = logits[:, -1, :]
-                
-                new_kv = next_token_logits.unsqueeze(1)
-
-                pos = seq_len + step
-                kv_cache[: , pos - 1 : pos, :] = new_kv
-                
-                next_token_id = torch.argmax(next_token_logits, dim=-1, keepdim=True)
-                current_sequence = torch.cat([current_sequence, next_token_id], dim=1)
-
-            return current_sequence
+        return current_sequence
 
 
 search_service = PyTorchVectorSearchService()
