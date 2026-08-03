@@ -79,3 +79,80 @@ Things I don't know :
 -> scale : streaming (yield?), batching
 -> sécurité : pickle.loads, sql injections? 
 
+
+La phrase Mistral parfaite à retenir :
+
+"For external dependencies, I would add timeouts, retries with exponential backoff, and make sure retries are safe regarding idempotency."
+
+La phrase code review si tu vois du code sans type hints :
+
+"I would add proper type annotations here to make the expected inputs and outputs clearer, especially for optional values like str | None."
+
+"I see hardcoded configuration values here. I would move them to environment variables using os.environ so the application can be configured differently across environments without modifying the code, and to avoid exposing secrets."
+
+Les 3 phrases les plus importantes à retenir pour Mistral :
+Dépendance externe :
+
+"I would mock external dependencies to make the test deterministic and avoid relying on external services."
+
+DB :
+
+"I would inject the database dependency and use an in-memory database or a mock repository."
+
+API :
+
+"I would test both the happy path and failure cases, especially invalid inputs and downstream service failures."
+
+En code review, si tu vois :
+content = file.read()
+
+Tu dis :
+
+"This won't scale because we load the entire file into memory. I would stream the data using an iterator or a generator with yield."
+
+Différence streaming vs batching
+
+Ils résolvent deux problèmes différents :
+
+Concept	Problème résolu
+Streaming	Trop de données en mémoire
+Batching	Trop d'appels réseau
+
+Phrase parfaite en entretien :
+
+Si tu vois :
+
+content = file.read()
+
+for log in logs:
+    requests.post(...)
+
+Tu peux dire :
+
+"This won't scale because we load everything into memory and perform one network call per item. I would stream the data using generators and process it in batches to reduce memory usage and network overhead."
+
+En code review :
+
+Si tu vois :
+
+cursor.execute(f"...{variable}...")
+
+Tu dis :
+
+"This is vulnerable to SQL injection. I would use parameterized queries instead of string concatenation."
+
+En code review :
+
+Si tu vois :
+
+pickle.loads(user_input)
+
+Tu dis :
+
+"This is a security vulnerability because pickle deserialization can lead to remote code execution. I would avoid pickle for untrusted data and use a safer format like JSON."
+
+**Objectifs pour demain (~The Last Dance~)**
+-> Faire le final mock exam en mettant énormément l'accent sur l'oral
+-> Une fois en anglais, une fois en français
+-> Préparer les antisèches
+-> Préparer les questions pour Soël

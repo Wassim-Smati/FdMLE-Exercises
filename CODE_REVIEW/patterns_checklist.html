@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Reflexes & Catchphrases Cheat Sheet (1-Page)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 4mm 6mm 4mm 6mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #0f172a;
+    background-color: #ffffff;
+    font-size: 8px;
+    line-height: 1.15;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* HEADER BANNER */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left h1 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: #ffffff;
+  }
+
+  .header-left p {
+    font-size: 8px;
+    color: #cbd5e1;
+  }
+
+  .header-badge {
+    background: rgba(99, 102, 241, 0.3);
+    border: 1px solid #818cf8;
+    color: #e0e7ff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 7.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* MAIN 3-COLUMN MASONRY */
+  .columns-wrap {
+    column-count: 3;
+    column-gap: 5px;
+  }
+
+  .col-break {
+    column-span: all;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 4px 0 3px 0;
+  }
+
+  /* CARD */
+  .card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 4px 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-phrase {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #1e1b4b;
+    background: #f1f5f9;
+    padding: 2.5px 5px;
+    border-left: 3px solid #4f46e5;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .item-row {
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 3px;
+    padding: 2.5px 4.5px;
+  }
+
+  .symptom {
+    font-size: 7.5px;
+    font-weight: 600;
+    color: #b91c1c;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 1.5px;
+    line-height: 1.1;
+  }
+
+  .symptom::before {
+    content: "🔍";
+    font-size: 6.5px;
+  }
+
+  .solution {
+    font-size: 7.5px;
+    font-weight: 600;
+    color: #15803d;
+    background: #f0fdf4;
+    border-left: 1.5px solid #22c55e;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.1;
+  }
+
+  .footer {
+    margin-top: 4px;
+    text-align: center;
+    font-size: 7px;
+    color: #94a3b8;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 2px;
+    grid-column: 1 / -1;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <h1>⚡ Code Review & Oral Checklist (Fiche 1-Page)</h1>
+      <p>Phrases d'Accroche & Réflexes Systématiques (Master Checklist)</p>
+    </div>
+    <div class="header-badge">1 PAGE ULTIME</div>
+  </div>
+
+  <div class="columns-wrap">
+
+    <div class="card">
+      <div class="card-phrase" title="I see a reliability issue here ...">"I see a reliability issue here ..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">external API / LLM call</div>
+          <div class="solution">➔ timeout + retry + backoff + exponential fallback</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">response.json()["key"]</div>
+          <div class="solution">➔ check status + validate before parsing</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">missing error handling</div>
+          <div class="solution">➔ try/except + proper HTTP codes</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I see a security concern here ...">"I see a security concern here ..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">pickle.loads(...)</div>
+          <div class="solution">➔ unsafe deserialization / RCE</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">f"...{user_input}..." SQL</div>
+          <div class="solution">➔ SQL injection</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">hardcoded API keys</div>
+          <div class="solution">➔ env variables / secret manager</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">LLM output execution</div>
+          <div class="solution">➔ Pydantic validation</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I would split this into separate components...">"I would split this into separate components..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">God class/function</div>
+          <div class="solution">➔ SRP violation</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="This will be hard to test ...">"This will be hard to test ..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">direct HTTP/DB/filesystem</div>
+          <div class="solution">➔ mocks + dependency injection</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">service instantiated inside function</div>
+          <div class="solution">➔ inject dependency</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="This won't scale because ...">"This won't scale because ..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">file.read() / load all data</div>
+          <div class="solution">➔ streaming + yield</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">one HTTP call per item</div>
+          <div class="solution">➔ batching</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">DB query in loop</div>
+          <div class="solution">➔ N+1 problem</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">heavy task in API</div>
+          <div class="solution">➔ background worker / queue</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">repeated LLM calls</div>
+          <div class="solution">➔ cache (Redis)</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="This blocks the event loop ...">"This blocks the event loop ..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">requests / time.sleep in async</div>
+          <div class="solution">➔ httpx.AsyncClient + await asyncio.sleep</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">asyncio.run() in FastAPI</div>
+          <div class="solution">➔ await directly</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I would add a timeout and a retry strategy...">"I would add a timeout and a retry strategy..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">requests.post(...)</div>
+          <div class="solution">➔ timeout + retry + try/except + async client + idempotency key</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">transient errors (502/503/timeout)</div>
+          <div class="solution">➔ retry</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I would validate the input with Pydantic...">"I would validate the input with Pydantic..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">request.json() / dict from user</div>
+          <div class="solution">➔ BaseModel DTO</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">LLM JSON output</div>
+          <div class="solution">➔ structured output + model_validate()</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">tool calls</div>
+          <div class="solution">➔ validate before execution</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="This should be logged properly...">"This should be logged properly..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">print()</div>
+          <div class="solution">➔ logger</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">except: pass</div>
+          <div class="solution">➔ logger.exception()</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">logs without context</div>
+          <div class="solution">➔ trace_id</div>
+        </div>
+
+        <div class="item-row">
+          <div class="symptom">logger.info(f"...")</div>
+          <div class="solution">➔ lazy formatting</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I see a state management issue here...">"I see a state management issue here..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">self.chat_history in agent</div>
+          <div class="solution">➔ stateless service + pass history in request</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I see a RAG issue here...">"I see a RAG issue here..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">vector search without filter</div>
+          <div class="solution">➔ tenant isolation</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I see an agent reliability issue here...">"I see an agent reliability issue here..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">tool_calls[0]</div>
+          <div class="solution">➔ check existence first</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I would move this to configuration...">"I would move this to configuration..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">hardcoded model/temp/max_tokens/retry</div>
+          <div class="solution">➔ env/config file</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-phrase" title="I would make this deterministic...">"I would make this deterministic..."</div>
+      <div class="item-list">
+
+        <div class="item-row">
+          <div class="symptom">evals/benchmarks</div>
+          <div class="solution">➔ fixed seed + temperature=0 + reproducible dataset</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    Code Review Patterns & Reflexes • Antigravity AI Engineering • Single Page Cheat Sheet
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+I see a reliability issue here ...
+-> external API / LLM call = timeout + retry + backoff + exponential fallback
+-> response.json()["key"] = check status + validate before parsing
+-> missing error handling = try/except + proper HTTP codes
+
+I see a security concern here ...
+-> pickle.loads(...) = unsafe deserialization / RCE
+-> f"...{user_input}..." SQL = SQL injection
+-> hardcoded API keys = env variables / secret manager
+-> LLM output execution = Pydantic validation
+
+I would split this into separate components...
+-> God class/function = SRP violation
+
+This will be hard to test ...
+-> direct HTTP/DB/filesystem = mocks + dependency injection
+-> service instantiated inside function = inject dependency
+
+This won't scale because ...
+-> file.read() / load all data = streaming + yield
+-> one HTTP call per item = batching
+-> DB query in loop = N+1 problem
+-> heavy task in API = background worker / queue
+-> repeated LLM calls = cache (Redis)
+
+This blocks the event loop ...
+-> requests / time.sleep in async = httpx.AsyncClient + await asyncio.sleep
+-> asyncio.run() in FastAPI = await directly
+
+I would add a timeout and a retry strategy...
+-> requests.post(...) = timeout + retry + try/except + async client + idempotency key
+-> transient errors (502/503/timeout) = retry
+
+I would validate the input with Pydantic...
+-> request.json() / dict from user = BaseModel DTO
+-> LLM JSON output = structured output + model_validate()
+-> tool calls = validate before execution
+
+This should be logged properly...
+-> print() = logger
+-> except: pass = logger.exception()
+-> logs without context = trace_id 
+-> logger.info(f"...") = lazy formatting
+
+AI / LLM specific:
+
+I see a state management issue here...
+-> self.chat_history in agent = stateless service + pass history in request
+
+I see a RAG issue here...
+-> vector search without filter = tenant isolation
+
+I see an agent reliability issue here...
+-> tool_calls[0] = check existence first
+
+I would move this to configuration...
+-> hardcoded model/temp/max_tokens/retry = env/config file
+
+I would make this deterministic...
+-> evals/benchmarks = fixed seed + temperature=0 + reproducible dataset

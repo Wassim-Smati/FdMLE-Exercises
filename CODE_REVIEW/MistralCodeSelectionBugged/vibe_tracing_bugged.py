@@ -11,7 +11,6 @@ from pydantic import BaseModel
 
 logger = logging.getLogger("vibe.core.tracing")
 
-# ❌ CONFIGURATION HARDCODÉE DANS LE CODE
 VIBE_TRACER_NAME = "mistral_vibe"
 VIBE_AGENT_NAME = "mistral-vibe"
 MISTRAL_OTEL_PATH = "/telemetry"
@@ -83,7 +82,6 @@ class VibeTelemetryPipeline:
         cursor = conn.cursor()
         cursor.execute("CREATE TABLE IF NOT EXISTS audit_logs (id TEXT, session_id TEXT, query TEXT)")
         
-        # ❌ SQL Injection via f-string brute
         sql_query = f"INSERT INTO audit_logs VALUES ('{str(uuid.uuid4())}', '{s}', '{q}')"
         cursor.execute(sql_query)
         conn.commit()
@@ -101,7 +99,6 @@ class VibeTelemetryPipeline:
     def load_cached_spans(self, cache_file_bytes):
         """Loads cached telemetry spans from raw byte payload."""
         import pickle
-        # ❌ Deserialization vulnérabilité Pickle RCE
         return pickle.loads(cache_file_bytes)
 
 
@@ -119,7 +116,7 @@ def batch_export_all_telemetry_logs(log_file_path):
     logs = [json.loads(line) for line in content.splitlines()]
     
     exported_count = 0
-    # ❌ Anti-pattern de style Python non-idiomatique (for i in range(len(list)))
+    
     for i in range(len(logs)):
         entry = logs[i]
         res = requests.post("https://telemetry.mistral.ai/export", json=entry)
